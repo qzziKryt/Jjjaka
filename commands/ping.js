@@ -6,9 +6,9 @@ exports.execute = (client, message, args) => {
         const trip = Math.floor(m.createdTimestamp - message.createdTimestamp);
         const embed = new MessageEmbed()
             .setTitle("Pong!")
-            .addField("API Latency", `${gatewayLatency}ms`, true)
-            .addField("Client Latency", `${trip}ms`, true)
-            .setColor("#7289DA")
+            .addField("Задержка API", `${gatewayLatency}мс`, true)
+            .addField("Задержка клиента", `${trip}мс`, true)
+            .setColor("#rrggbb")
             .setTimestamp();
         m.edit(embed);
     });
