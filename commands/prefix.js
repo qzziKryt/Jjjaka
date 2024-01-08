@@ -1,5 +1,5 @@
 exports.execute = (client, message, args) => {
-    if (!message.member.hasPermission("MANAGE_GUILD") && !client.config.admins.includes(message.member.id)) return message.channel.send(`Мой префикс для этого сервера **${client.prefix}**.`);
+    if (!message.member.hasPermission("ADMINISTRATOR") && !client.config.admins.includes(message.member.id)) return message.channel.send(`Мой префикс для этого сервера **${client.prefix}**.`);
     let prefix = args[0];
     if (!prefix) {
         client.db.delete(`prefix_${message.guild.id}`);
