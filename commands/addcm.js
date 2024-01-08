@@ -23,6 +23,6 @@ exports.execute = async (client, message, args) => {
 
 exports.help = {
     name: "addcm",
-    aliases: ["addcm"],
+    aliases: ["addbal"],
     usage: `addcm @user <количество>`
 }
