@@ -1,24 +1,27 @@
 const { MessageEmbed } = require("discord.js");
 
 exports.execute = async (client, message, args) => {
-    if (!client.config.admins.includes(message.author.id)) return; // return if author isn't bot owner
-    let user = message.mentions.users.first();
-    if (!user) return message.channel.send("Please specify a user!");
-    let amount = args[1];
-    if (!amount || isNaN(amount)) return message.reply("Please specify a valid amount.");
-    let data = client.eco.setMoney(user.id, parseInt(amount));
-    const embed = new MessageEmbed()
-        .setTitle(`Money Updated!`)
-        .addField(`User`, `<@${data.user}>`)
-        .addField(`Total Amount`, data.after)
-        .setColor("RANDOM")
-        .setThumbnail(user.displayAvatarURL)
-        .setTimestamp();
-    return message.channel.send(embed);
+  if (!message.member.hasPermission("ADMINISTRATOR")) 
+  {
+      return message.channel.send("У вас недостаточно прав.");
+  }
+  let user = message.mentions.users.first();
+  if (!user) return message.channel.send("Пожалуйста, укажите пользователя!");
+  let amount = args[1];
+  if (!amount || isNaN(amount)) return message.reply("Пожалуйста, укажите действительную сумму.");
+  let data = client.eco.setMoney(user.id, parseInt(amount));
+  const embed = new MessageEmbed()
+      .setTitle(`СМ обновлены!`)
+      .addField(`Участник`, `<@${data.user}>`)
+      .addField(`Писька`, data.after + ` см`)
+      .setColor("#rrggbb")
+      .setThumbnail(user.displayAvatarURL())
+      .setTimestamp();
+  return message.channel.send(embed);
 }
 
 exports.help = {
-    name: "setmoney",
+    name: "setcm",
     aliases: ["setbal"],
-    usage: `setmoney @user <amount>`
+    usage: `setcm @user <количество>`
 }
