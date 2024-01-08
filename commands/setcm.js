@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 exports.execute = async (client, message, args) => {
   if (!message.member.hasPermission("ADMINISTRATOR")) 
   {
-      return message.channel.send("У вас недостаточно прав.");
+      return message.channel.send("У вас недостаточно прав!");
   }
   let user = message.mentions.users.first();
   if (!user) return message.channel.send("Пожалуйста, укажите пользователя!");
