@@ -1,5 +1,6 @@
 module.exports = {
-    token: "TOKEN",
-    prefix: ".",
-    debug: true,
+  token: "TOKEN",
+  prefix: ".",
+  debug: false,
+  countChannel: ""
 };
